@@ -5,14 +5,22 @@ function App() {
   let[count,setCounter] = useState(15)
   const addValue = () =>
     { 
-      count++
-      setCounter(count)
+      setCounter(++count)
+      setCounter(++count)
+      /* This Will Work, setCounter is also a funciton */
+      setCounter((c)=> ++c)
+      setCounter((c)=>++c)
+      // 
+
       console.log(counter)
     }
   const subtractValue = () => 
     {
-      count--
-      setCounter(count)
+      setCounter(count - 1)
+      setCounter(count - 1)
+      setCounter(count - 1)
+      setCounter(count - 1 ) 
+      {/* This will not work as expected because of useState react send request in batches therefor it will treat it as single request and duplicacy of operations */}
       console.log(counter)
     }
 
